@@ -26,7 +26,6 @@ Output: 0
 
 
 Constraints:
-Constraints:
 
 1 <= nums.length <= 104
 -104 <= nums[i] <= 104
