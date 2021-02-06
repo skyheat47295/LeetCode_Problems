@@ -44,7 +44,7 @@ class Solution:
         return str(c)
 
 
-my_a = '1010'
-my_b = '1011'
+my_a = '11'
+my_b = '1'
 solution = Solution()
 print(solution.addBinary(my_a, my_b))
