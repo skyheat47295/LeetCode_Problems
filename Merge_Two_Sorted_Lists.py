@@ -67,13 +67,13 @@ class Solution:
         return new_list_result.next
 
 
-my_l1 = ListNode(1)
-my_l1.next = ListNode(2)
-my_l1.next.next = ListNode(4)
+my_l1 = []
+# my_l1.next = ListNode(2)
+# my_l1.next.next = ListNode(4)
 
-my_l2 = ListNode(1)
-my_l2.next = ListNode(3)
-my_l2.next.next = ListNode(4)
+my_l2 = []
+# my_l2.next = ListNode(3)
+# my_l2.next.next = ListNode(4)
 solution = Solution()
 
 print(solution.mergeTwoLists(my_l1, my_l2))
