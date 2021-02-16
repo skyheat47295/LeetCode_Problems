@@ -40,4 +40,4 @@ class Solution:
 
 
 solution = Solution()
-print(solution.lengthOfLastWord('         '))
+print(solution.lengthOfLastWord('Hello World'))
