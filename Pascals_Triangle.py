@@ -31,3 +31,16 @@ Constraints:
 1 <= numRows <= 30
 """
 
+
+class Solution:
+    def generate(self, numRows: int) -> list[list[int]]:
+        if numRows == 0:
+            return []
+        if numRows == 1:
+            return [[1]]
+        result = self.generate(numRows - 1)
+        return result + [[1] + [result[-1][i - 1] + result[-1][i] for i in range(1, numRows - 1)] + [1]]
+
+
+solution = Solution()
+print(solution.generate(5))
