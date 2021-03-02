@@ -39,20 +39,19 @@ Output: "ZY"
 class Solution:
     def converttotitle(self, n: int) -> str:
         result = ''
-        place_holder = n
         if n == 0:
             return result
-        while place_holder >= 26:
-            if place_holder == 26:
-                result = 'Z' + result
+        while n >= 26:
+            if n % 26 > 0:
+                result = chr(n % 26 + 64) + result
             else:
-                result = chr(place_holder % 26 + 64) + result
-            place_holder = place_holder // 26
-                #  result += chr(place_holder - 26 + 90)  # if you're past Z then add a digit(letter)
-        # result = chr(place_holder % 26 + 64) + result
-        result += chr(place_holder % 26 + 64)
+                result = 'Z' + result
+                n -= 1
+            n = n // 26
+        if n > 0:
+            result = chr(n % 26 + 64) + result
         return result
 
 
 solution = Solution()
-print(solution.converttotitle(701))
+print(solution.converttotitle(676))
