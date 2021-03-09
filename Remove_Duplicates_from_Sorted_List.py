@@ -42,11 +42,20 @@ class ListNode:
 
 class Solution:
     def deleteduplicates(self, head: ListNode) -> ListNode:
-        pass
+        if not head:
+            return head
+        new_head = ListNode(head.val)
+        while head.next:
+            if head.val == head.next.val:
+                head.next = head.next.next
+            else:
+                head = head.next
+        return head
 
 
 my_head = ListNode(1)
-my_head.next = 1
-my_head.next = 2
+my_head.next = ListNode(1)
+my_head.next.next = ListNode(2)
 solution = Solution()
 print(solution.deleteduplicates(my_head))
+print('done')
