@@ -44,19 +44,20 @@ class Solution:
     def deleteduplicates(self, head: ListNode) -> ListNode:
         if not head:
             return head
-        while head.next:
-            if head.val == head.next.val:
-                head.next = head.next.next
+        in_head = head
+        while in_head.next:
+            if in_head.val == in_head.next.val:
+                in_head.next = in_head.next.next
             else:
-                head = head.next
-        return head
+                in_head = in_head.next
+        return head  # difference in returning head vs in_head
 
 
 my_head = ListNode(1)
 my_head.next = ListNode(1)
 my_head.next.next = ListNode(2)
-my_head.next.next.next = ListNode(3)
-my_head.next.next.next.next = ListNode(3)
+# my_head.next.next.next = ListNode(3)
+# my_head.next.next.next.next = ListNode(3)
 
 solution = Solution()
 solution.deleteduplicates(my_head)
