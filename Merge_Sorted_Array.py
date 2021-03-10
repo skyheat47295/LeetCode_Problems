@@ -58,10 +58,10 @@ class Solution:
         return
 
 
-my_nums1 = [2, 0]
-my_m = 1
-my_nums2 = [1]
-my_n = 1
+my_nums1 = [1, 2, 3, 0, 0, 0]
+my_m = 3
+my_nums2 = [4, 5, 6]
+my_n = 3
 solution = Solution()
 solution.merge(my_nums1, my_m, my_nums2, my_n)
 print(my_nums1)
