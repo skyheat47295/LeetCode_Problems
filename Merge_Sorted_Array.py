@@ -40,19 +40,26 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        if m < 1 or n < 1:
+        if n < 1:
+            return
+        if m == 0:
+            nums1.pop(-1)
+            nums1.insert(0, nums2.pop(0))
             return
         for num_index in range(m + n):
-            if nums1[num_index] > nums2[0]:
-                nums1.insert(num_index, nums2.pop(0))
+            if nums1[num_index] > nums2[0] or num_index > m:
                 nums1.pop(-1)
+                nums1.insert(num_index, nums2.pop(0))
+        while len(nums2) > 0:
+            nums1.pop(-1)
+            nums1.insert(m, nums2.pop(0))
         return
 
 
-my_nums1 = [1, 2, 3, 0, 0, 0]
-my_m = 3
-my_nums2 = [2, 5, 6]
-my_n = 3
+my_nums1 = [1, 0]
+my_m = 1
+my_nums2 = [2]
+my_n = 1
 solution = Solution()
 solution.merge(my_nums1, my_m, my_nums2, my_n)
 print(my_nums1)
