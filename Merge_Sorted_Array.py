@@ -40,21 +40,9 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        if n < 1:
-            return
-        if m == 0:
-            nums1.pop(-1)
-            nums1.insert(0, nums2.pop(0))
-            return
-        for num_index in range(m + n):
-            if not nums2:
-                return
-            if nums1[num_index] > nums2[0] or num_index > m:
-                nums1.pop(-1)
-                nums1.insert(num_index, nums2.pop(0))
-        while len(nums2) > 0:
-            nums1.pop(-1)
-            nums1.insert(m, nums2.pop(0))
+        for count in range(n):
+            nums1[m + count] = nums2[count]
+        nums1.sort()
         return
 
 
