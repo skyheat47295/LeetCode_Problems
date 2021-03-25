@@ -52,4 +52,4 @@ class Solution:
 
 
 solution = Solution()
-print(solution.titletonumber('YY'))
+print(solution.titletonumber('AF'))
