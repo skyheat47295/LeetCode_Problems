@@ -40,18 +40,23 @@ class TreeNode:
 
 class Solution:
     def issymmetric(self, root: TreeNode) -> bool:
-        #  if root is None:
-        #      return False
-        #if root.right is None or root.left is None:
-        #    return False
-        if root.right is None and root.left is None:
+        def stage_2(left, right):
+            if right is None and left is None:
+                return True
+            elif left and right:
+                return left.val == right.val and \
+                       stage_2(left.left, right.right) and \
+                       stage_2(left.right, right.left)
+            else:
+                return False
+
+        if root:
+            return stage_2(root.left, root.right)
+        else:
             return True
 
-        else:
-            return (root.left.val == root.right.val) and self.issymmetric(root.left.left) and self.issymmetric(root.right.right)
 
-
-""" Test3 True
+""" Test3 True """
 my_tree = TreeNode(1, 2, 2)
 my_tree.left = TreeNode(2)
 my_tree.right = TreeNode(2)
@@ -59,8 +64,8 @@ my_tree.right = TreeNode(2)
 #my_tree.left.right = TreeNode(4)
 #my_tree.right.left = TreeNode(4)
 #my_tree.right.right = TreeNode(3)
-"""
-""" Test2 False """
+
+""" Test2 False
 my_tree = TreeNode(1, 2, 2)
 my_tree.left = TreeNode(2, None, 3)
 my_tree.right = TreeNode(2, None, 3)
@@ -68,7 +73,7 @@ my_tree.right = TreeNode(2, None, 3)
 my_tree.left.right = TreeNode(3)
 #  my_tree.right.left = TreeNode(4)
 my_tree.right.right = TreeNode(3)
-
+"""
 
 """ Test1 True
 my_tree = TreeNode(1, 2, 2)
@@ -79,6 +84,7 @@ my_tree.left.right = TreeNode(4)
 my_tree.right.left = TreeNode(4)
 my_tree.right.right = TreeNode(3)
 """
+
 """https://realpython.com/null-in-python/"""
 
 
