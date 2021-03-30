@@ -50,22 +50,13 @@ class TreeNode:
 
 class Solution:
     def maxdepth(self, root: TreeNode) -> int:
-        def stage_2(tree: TreeNode, depth: int = 0) -> int:
-            if tree.right is None and tree.left is None:
-                return depth
-            else:
-                depth += 1
-                stage_2(tree.left)
-                stage_2(tree.right)
-                return depth
-
         if root:
-            return stage_2(root)
+            return 1 + max(self.maxdepth(root.left), self.maxdepth(root.right))
         else:
             return 0
 
 
-""" Test1 True """
+""" Test1 answer 3
 my_tree = TreeNode(3, 9, 20)
 my_tree.left = TreeNode(9, None, None)
 my_tree.right = TreeNode(20, 15, 7)
@@ -73,7 +64,26 @@ my_tree.right = TreeNode(20, 15, 7)
 # my_tree.left.right = TreeNode(4)
 my_tree.right.left = TreeNode(15)
 my_tree.right.right = TreeNode(7)
+"""
 
+""" Test2 answer 2
+my_tree = TreeNode(1, None, 2)
+#my_tree.left = TreeNode(9, None, None)
+my_tree.right = TreeNode(2)
+# my_tree.left.left = TreeNode(3)
+# my_tree.left.right = TreeNode(4)
+#my_tree.right.left = TreeNode(15)
+#my_tree.right.right = TreeNode(7)
+"""
+
+""" Test3 answer 1 """
+my_tree = TreeNode(0)
+#my_tree.left = TreeNode(9, None, None)
+#my_tree.right = TreeNode(2)
+# my_tree.left.left = TreeNode(3)
+# my_tree.left.right = TreeNode(4)
+#my_tree.right.left = TreeNode(15)
+#my_tree.right.right = TreeNode(7)
 
 solution = Solution()
 print(solution.maxdepth(my_tree))
