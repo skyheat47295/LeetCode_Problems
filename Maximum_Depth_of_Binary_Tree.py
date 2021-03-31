@@ -76,7 +76,7 @@ my_tree.right = TreeNode(2)
 #my_tree.right.right = TreeNode(7)
 """
 
-""" Test3 answer 1 """
+""" Test3 answer 1
 my_tree = TreeNode(0)
 #my_tree.left = TreeNode(9, None, None)
 #my_tree.right = TreeNode(2)
@@ -84,6 +84,6 @@ my_tree = TreeNode(0)
 # my_tree.left.right = TreeNode(4)
 #my_tree.right.left = TreeNode(15)
 #my_tree.right.right = TreeNode(7)
-
+"""
 solution = Solution()
 print(solution.maxdepth(my_tree))
