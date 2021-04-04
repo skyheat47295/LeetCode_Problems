@@ -48,17 +48,18 @@ class TreeNode:
 
 class Solution:
     def isbalanced(self, root: TreeNode) -> bool:
-        return bool(depth(root))
-
-
-    def depth(self, node):
-        left_depth = 1 + self.depth(node.left) if node.left else 0
-        right_depth = 1 + self.depth(node.right) if node.right else 0
-        if -2 < left_depth - right_depth < 2:
+        if not root:
             return True
-        else:
-            return False
 
+        def depth(node):
+            left_depth = depth(node.left) if node.left else 0
+            right_depth = 1 + depth(node.right) if node.right else 0
+            if -2 < left_depth - right_depth < 2:
+                return True
+            else:
+                return False
+
+        return bool(depth(root))
 
 
 """ Test2 answer False """
@@ -71,4 +72,4 @@ my_tree.left.left = TreeNode(3, 4, 4)
 # my_tree.right.right = TreeNode(7)
 
 solution = Solution()
-print(solution.isbalanced(my_tree))
+solution.isbalanced(my_tree)
