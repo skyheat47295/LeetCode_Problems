@@ -58,7 +58,7 @@ class Solution:
         return bool(depth(root))
 
 
-""" Test4 answer False """
+""" Test 4 answer False """
 my_tree = TreeNode(1, 2, 2)
 my_tree.left = TreeNode(2, 3, None)
 my_tree.right = TreeNode(2, None, 3)
