@@ -48,22 +48,36 @@ class TreeNode:
 
 class Solution:
     def isbalanced(self, root: TreeNode) -> bool:
-        # if not root:
-        #    return True
+        if root.left is None and root.right is None:
+            return True
+
         def depth(node):
-            count_left = 1 + self.isbalanced(node.left) if node.left else 0
-            count_right = 1 + self.isbalanced(node.right) if node.right else 0
-            print(f' count left {count_left} count right {count_right}')
-            return count_left, count_right
+            count_left = 1 + depth(node.left) if node.left else 0
+            count_right = 1 + depth(node.right) if node.right else 0
+            return max(count_left, count_right) if abs(count_left - count_right) <= 1 else False
 
-        result = max(depth(root))
-        print(f' result {result}')
-        return bool(result <= 1)
+        return bool(depth(root))
 
+
+""" Test4 answer False """
+my_tree = TreeNode(1, 2, 2)
+my_tree.left = TreeNode(2, 3, None)
+my_tree.right = TreeNode(2, None, 3)
+my_tree.left.left = TreeNode(3, 4, None)
+my_tree.left.left.left = TreeNode(4)
+# my_tree.left.left.right = TreeNode(4)
+# my_tree.left.right = TreeNode(3)
+# my_tree.right.left = TreeNode(15)
+my_tree.right.right = TreeNode(3, None, 4)
+my_tree.right.right.right = TreeNode(4)
+
+""" Test3 answer True
+my_tree = TreeNode(1)
+"""
 
 """ Test2 answer False
 my_tree = TreeNode(1, 2, 2)
-my_tree.left = TreeNode(2, 3, 3)
+my_tree.left = TreeNode(2, 3, None)
 my_tree.right = TreeNode(2)
 my_tree.left.left = TreeNode(3, 4, 4)
 my_tree.left.left.left = TreeNode(4)
@@ -73,7 +87,7 @@ my_tree.left.right = TreeNode(3)
 # my_tree.right.right = TreeNode(7)
 """
 
-""" Test1 answer True """
+""" Test1 answer True
 my_tree = TreeNode(3, 9, 20)
 my_tree.left = TreeNode(9)
 my_tree.right = TreeNode(20, 15, 7)
@@ -83,7 +97,7 @@ my_tree.right = TreeNode(20, 15, 7)
 # my_tree.left.right = TreeNode(3)
 my_tree.right.left = TreeNode(15)
 my_tree.right.right = TreeNode(7)
-
+"""
 
 solution = Solution()
 print(solution.isbalanced(my_tree))
