@@ -47,27 +47,26 @@ class TreeNode:
 
 class Solution:
     def hasPathSum(self, root: TreeNode, targetSum: int) -> bool:
-        pass
+        if not root:
+            return False
+        elif root and not root.left and not root.right:
+            if targetSum - root.val == 0:
+                return True
+            return False
+        return self.hasPathSum(root.left, targetSum - root.val) or self.hasPathSum(root.right, targetSum - root.val)
 
 
-""" Test1 answer 2
-my_tree = TreeNode(3, 9, 20)
-my_tree.left = TreeNode(9, None, None)
-my_tree.right = TreeNode(20, 15, 7)
-# my_tree.left.left = TreeNode(3)
-# my_tree.left.right = TreeNode(4)
-my_tree.right.left = TreeNode(15)
-my_tree.right.right = TreeNode(7)
-"""
-
-""" Test2 answer 5 """
-my_tree = TreeNode(2, None, 3)
-my_tree.right = TreeNode(3, None, 4)
-my_tree.right.right = TreeNode(4, None, 5)
-my_tree.right.right.right = TreeNode(5, None, 6)
-my_tree.right.right.right.right = TreeNode(6)
+""" Test1 answer True """
+my_tree = TreeNode(5, 4, 8)
+my_tree.left = TreeNode(4, 11, None)
+my_tree.left.left = TreeNode(11, 7, 2)
+my_tree.left.left.left = TreeNode(7)
+my_tree.left.left.right = TreeNode(2)
+my_tree.right = TreeNode(8, 13, 4)
+my_tree.right.left = TreeNode(13)
+my_tree.right.right = TreeNode(4, None, 1)
+my_tree.right.right.right = TreeNode(1)
 
 
 solution = Solution()
 print(solution.hasPathSum(my_tree, 22))
-
