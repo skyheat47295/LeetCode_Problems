@@ -38,6 +38,7 @@ The number of nodes in the tree is in the range [0, 5000].
 -104 <= Node.val <= 104"""
 
 
+from binarytree import build
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -58,7 +59,7 @@ class Solution:
         return bool(depth(root))
 
 
-""" Test 4 answer False """
+""" Test 4 answer False
 my_tree = TreeNode(1, 2, 2)
 my_tree.left = TreeNode(2, 3, None)
 my_tree.right = TreeNode(2, None, 3)
@@ -69,6 +70,7 @@ my_tree.left.left.left = TreeNode(4)
 # my_tree.right.left = TreeNode(15)
 my_tree.right.right = TreeNode(3, None, 4)
 my_tree.right.right.right = TreeNode(4)
+"""
 
 """ Test3 answer True
 my_tree = TreeNode(1)
@@ -86,7 +88,7 @@ my_tree.left.right = TreeNode(3)
 # my_tree.right.right = TreeNode(7)
 """
 
-""" Test1 answer True
+""" Test1 answer True """
 my_tree = TreeNode(3, 9, 20)
 my_tree.left = TreeNode(9)
 my_tree.right = TreeNode(20, 15, 7)
@@ -96,7 +98,11 @@ my_tree.right = TreeNode(20, 15, 7)
 # my_tree.left.right = TreeNode(3)
 my_tree.right.left = TreeNode(15)
 my_tree.right.right = TreeNode(7)
-"""
 
+
+root = [3, 9, 20, None, None, 15, 7]
+binary_tree = build(root)
 solution = Solution()
 print(solution.isbalanced(my_tree))
+print(solution.isbalanced(binary_tree))
+print('the end')
