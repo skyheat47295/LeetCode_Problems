@@ -88,7 +88,7 @@ my_tree.left.right = TreeNode(3)
 # my_tree.right.right = TreeNode(7)
 """
 
-""" Test1 answer True """
+""" Test 1 answer True """
 my_tree = TreeNode(3, 9, 20)
 my_tree.left = TreeNode(9)
 my_tree.right = TreeNode(20, 15, 7)
