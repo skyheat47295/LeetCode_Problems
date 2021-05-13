@@ -38,14 +38,22 @@ Constraints:
 class Solution:
     def maxprofit(self, prices: list[int]) -> int:
         lowest = highest = prices[0]
-        for price in prices:
-            if price < lowest:
+        lowest_day = 0
+        highest_day = 0
+        for i, price in enumerate(prices):
+            if price < lowest and highest_day <= lowest_day:
                 lowest = highest = price
+                lowest_day = i
+                highest_day = i
+                continue
             if price > highest:
                 highest = price
+                highest_day = i
+                continue
+            lowest_day = i
         return highest - lowest
 
 
-my_prices = [2, 4, 1]
+my_prices = [3, 2, 6, 5, 0, 3]
 solution = Solution()
 print(solution.maxprofit(my_prices))
