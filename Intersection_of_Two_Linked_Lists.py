@@ -68,3 +68,25 @@ class Solution:
             list1 = list1.next if list1 else headB
             list2 = list2.next if list2 else headA
         return list1
+
+
+def list_node_from_list(list_to_convert) -> ListNode:
+    list_node = ListNode(None)
+    if list_to_convert:
+        list_node.val = list_to_convert[0]
+        list_to_convert.pop(0)
+    if list_to_convert:
+        list_node.next = list_node_from_list(list_to_convert)
+    return list_node
+
+
+listA = [4, 1, 8, 4, 5]
+listB = [5, 6, 1, 8, 4, 5]
+my_list_nodeA = list_node_from_list(listA)
+my_list_nodeB = list_node_from_list(listB)
+intersection2 = my_list_nodeA.next
+intersection1 = my_list_nodeB.next.next
+my_list_nodeA.next = my_list_nodeB.next.next
+solution = Solution()
+result = solution.getintersectionnode(my_list_nodeA, my_list_nodeB)
+print(result)
