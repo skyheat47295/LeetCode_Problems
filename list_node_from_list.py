@@ -1,3 +1,5 @@
+""" Take note, if multiples are made they are not linked """
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
