@@ -45,6 +45,12 @@ class Solution:
                 return trailing_zeros
         return trailing_zeros
 
+    def alternate_trailingzeroes(self, n: int) -> int:
+        result = 0
+        while n > 0:
+            n //= 5
+            result += n
+        return result
 
 my_n = 0
 solution = Solution()
