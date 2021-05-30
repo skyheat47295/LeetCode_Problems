@@ -1,0 +1,8 @@
+# 182. Duplicate Emails
+
+SELECT
+    DISTINCT Email AS Email
+    FROM Person as email1, Person as email2
+    WHERE
+        email1.Id <> email2.ID
+            AND email1.Email=email2.Email;

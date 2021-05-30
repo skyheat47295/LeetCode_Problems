@@ -1,0 +1,9 @@
+# 181. Employees Earning More Than Their Managers
+
+SELECT emp.Name AS 'Employee'
+FROM
+    Employee AS emp,
+    Employee AS mgr
+WHERE
+    emp.ManagerId = mgr.Id
+        AND emp.Salary > mgr.Salary;
